@@ -26,9 +26,9 @@ class CreateEmployeesAndVacanciesTable extends Migration
         Schema::create('vacancies', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('description');
+            $table->longText('description');
             $table->double('salary', 30, 4);
-            $table->string('benefits');
+            $table->longText('benefits');
             $table->timestamps();
             $table->softDeletes();
         });

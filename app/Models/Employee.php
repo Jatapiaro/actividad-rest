@@ -23,7 +23,8 @@ class Employee extends Model
      * @var  array
      */
     protected $fillable = [
-        //
+        'name',
+        'salary'
     ];
 
     /**
@@ -37,10 +38,16 @@ class Employee extends Model
     {
         $data = [];
         $data['rules'] = [
-            //
+            'name' => 'required|string',
+            'salary' => 'required|numeric|between:1,99999999999999999999999999.9999'
         ];
         $data['messages'] = [
-            //
+            'name.required' => 'Se requiere el nombre del empleado',
+            'name.string' => 'El nombre del empleadp debe ser texto',
+
+            'salary.required' => 'Se requiere el salario del empleado',
+            'salary.numeric' => 'El salario debe ser un número',
+            'salary.between' => 'El salario debe ser un número entre 1 y 99999999999999999999999999.9999'
         ];
         return $data;
     }
