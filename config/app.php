@@ -175,6 +175,13 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /**
+         * Custom service providers
+         */
+        App\Providers\EmployeeServiceProvider::class,
+        App\Providers\JatapiaroServiceProvider::class,
+        App\Providers\VacantServiceProvider::class
+
     ],
 
     /*
@@ -223,6 +230,13 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        /*
+         * Custom Aliases
+         */
+        'EmployeeService' => App\Facades\EmployeeServiceFacade::class,
+        'JatapiaroService' => App\Facades\JatapiaroServiceFacade::class,
+        'VacantService' => App\Facades\VacantServiceFacade::class
 
     ],
 
