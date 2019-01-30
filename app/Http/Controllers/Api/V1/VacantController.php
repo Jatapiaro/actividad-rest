@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller as BaseController;
 use App\Models\Vacant;
 use App\Http\Resources\Vacant as VacantResource;
 
+use VacantService;
+
 class VacantController extends BaseController
 {
 
@@ -38,12 +40,12 @@ class VacantController extends BaseController
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Vacant $vacant
+     * @param  \App\Models\Vacant $vacancy
      * @return \Illuminate\Http\Response
      */
-    public function show(Vacant $vacant)
+    public function show(Vacant $vacancy)
     {
-        return new VacantResource($vacant);
+        return new VacantResource($vacancy);
     }
 
     /**
@@ -53,11 +55,11 @@ class VacantController extends BaseController
      * @param  \App\Models\Vacant $vacant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Vacant $vacant)
+    public function update(Request $request, Vacant $vacancy)
     {
         $vacantData = $request->input('vacant');
-        $vacant = VacantService::Update($vacant, $vacantData);
-        return new VacantResource($vacant);
+        $vacancy = VacantService::Update($vacancy, $vacantData);
+        return new VacantResource($vacancy);
     }
 
     /**
@@ -66,10 +68,10 @@ class VacantController extends BaseController
      * @param  \App\Models\Vacant $vacant
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Vacant $vacant)
+    public function destroy(Vacant $vacancy)
     {
-        $vacant->delete();
-        return new VacantResource($vacant);
+        $vacancy->delete();
+        return new VacantResource($vacancy);
     }
 
 }

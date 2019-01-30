@@ -51,7 +51,7 @@ class Vacant extends Model
             'benefits.required' => 'Se requieren los beneficios de la vacante',
             'benefits.string' => 'Los beneficios de la vacante deben ser un texto',
 
-            'description.required' => 'Se requiere la descripcion de la vacante',
+            'description.required' => 'Se requiere la descripción de la vacante',
             'description.string' => 'La descripción de la vacante debe ser un texto',
 
             'name.required' => 'Se requiere el nombre de la vacante',

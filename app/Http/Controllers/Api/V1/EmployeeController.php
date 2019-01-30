@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller as BaseController;
 use App\Models\Employee;
 use App\Http\Resources\Employee as EmployeeResource;
 
+use EmployeeService;
+
 class EmployeeController extends BaseController
 {
 

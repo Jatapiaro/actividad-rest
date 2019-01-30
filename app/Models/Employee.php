@@ -43,7 +43,7 @@ class Employee extends Model
         ];
         $data['messages'] = [
             'name.required' => 'Se requiere el nombre del empleado',
-            'name.string' => 'El nombre del empleadp debe ser texto',
+            'name.string' => 'El nombre del empleado debe ser texto',
 
             'salary.required' => 'Se requiere el salario del empleado',
             'salary.numeric' => 'El salario debe ser un número',
