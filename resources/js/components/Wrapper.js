@@ -20,6 +20,8 @@ import VacantService from '../services/VacantService';
 import { ToastContainer } from 'react-toastify';
 import CreateVacant from '../pages/vacancies/CreateVacant';
 import EditVacant from '../pages/vacancies/EditVacant';
+import CreateEmployee from '../pages/employees/CreateEmployee';
+import EditEmployee from '../pages/employees/EditEmployee';
 
 export default class Wrapper extends React.Component {
 
@@ -55,6 +57,22 @@ export default class Wrapper extends React.Component {
                                 path="/employees"
                                 render={(props) =>
                                     <Employees
+                                        employeeService={this.employeeService}
+                                        {...props}/>
+                                }
+                                exact={true} />
+                            <Route
+                                path="/employees/create"
+                                render={(props) =>
+                                    <CreateEmployee
+                                        employeeService={this.employeeService}
+                                        {...props}/>
+                                }
+                                exact={true} />
+                            <Route
+                                path="/employees/:id/edit"
+                                render={(props) =>
+                                    <EditEmployee
                                         employeeService={this.employeeService}
                                         {...props}/>
                                 }

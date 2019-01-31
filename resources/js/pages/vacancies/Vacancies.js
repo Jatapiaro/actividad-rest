@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, Dropdown, Table } from "tabler-react";
+import { Card, Dropdown, Table } from "tabler-react";
 import { toast } from 'react-toastify';
 import CardHeader from '../../components/CardHeader';
 import Modal, { ConfirmModal } from 'react-bootstrap4-modal';
@@ -117,7 +117,7 @@ export default class Vacancies extends React.Component {
                                                 <Table.Col>{v.id}</Table.Col>
                                                 <Table.Col>{v.name}</Table.Col>
                                                 <Table.Col>{v.description}</Table.Col>
-                                                <Table.Col>{v.salary}</Table.Col>
+                                                <Table.Col>${v.salary}</Table.Col>
                                                 <Table.Col>{v.benefits}</Table.Col>
                                                 <Table.Col>
                                                     <Dropdown

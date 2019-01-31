@@ -70,9 +70,6 @@ export default class EditVacant extends React.Component {
             vacant: vacant
         });
     }
-    componentDidUpdate() {
-        console.log(this.state.vacant);
-    }
 
     /**
      * Renders the component

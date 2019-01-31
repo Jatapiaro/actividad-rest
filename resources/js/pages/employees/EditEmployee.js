@@ -1,13 +1,30 @@
 import React from 'react';
-import Vacant from '../../models/Vacant';
-import VacantForm from '../../components/forms/VacantForm';
+import Employee from '../../models/Employee';
 import { toast } from 'react-toastify';
+import EmployeeForm from '../../components/forms/EmployeeForm';
 
-export default class CreateVacant extends React.Component {
+export default class EditEmployee extends React.Component {
 
     state = {
-        vacant: new Vacant(),
+        employee: new Employee(),
         errors: {}
+    }
+
+    /**
+     * Called when the component is going to be rendered
+     */
+    componentWillMount() {
+        const id = this.props.match.params.id;
+        this.props.employeeService.show(id)
+            .then((res) => {
+                let employee = this.state.employee;
+                employee.fillFromResponseData(res);
+                this.setState({employee: employee});
+            })
+            .catch((err) => {
+                console.log(err);
+                toast.error('¡Hubo un error al cargar el elemento!');
+            });
     }
 
     /**
@@ -30,12 +47,13 @@ export default class CreateVacant extends React.Component {
      */
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.vacantService.store(this.state.vacant)
+        this.props.employeeService.update(this.state.employee)
             .then(res => {
-                this.props.history.push("/vacancies");
-                toast.success('Se ha creado la vacante correctamente');
+                this.props.history.push("/employees");
+                toast.success('Se ha creado el empleado correctamente');
             })
             .catch(err => {
+                console.log(err);
                 this.setState({
                     errors: err.errors
                 });
@@ -47,10 +65,10 @@ export default class CreateVacant extends React.Component {
      * Handles the change of a value on some input
      */
     onValueChange = (e) => {
-        let vacant = this.state.vacant;
-        vacant[e.target.name] = e.target.value;
+        let employee = this.state.employee;
+        employee[e.target.name] = e.target.value;
         this.setState({
-            vacant: vacant
+            employee: employee
         });
     }
 
@@ -60,13 +78,13 @@ export default class CreateVacant extends React.Component {
     render() {
         return (
             <div className="container">
-                <VacantForm
+                <EmployeeForm
                     getError={this.getError}
                     handleSubmit={this.handleSubmit}
                     onValueChange={this.onValueChange}
-                    vacant={this.state.vacant}
-                    cardHeaderTitle={"Crear vacante"}
-                    footerButtonTitle={"Guardar vacante"}
+                    employee={this.state.employee}
+                    cardHeaderTitle={"Editar empleado"}
+                    footerButtonTitle={"Editar empleado"}
                 />
             </div>
         );
