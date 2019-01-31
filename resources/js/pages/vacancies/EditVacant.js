@@ -3,11 +3,27 @@ import Vacant from '../../models/Vacant';
 import VacantForm from '../../components/forms/VacantForm';
 import { toast } from 'react-toastify';
 
-export default class CreateVacant extends React.Component {
+export default class EditVacant extends React.Component {
 
     state = {
         vacant: new Vacant(),
         errors: {}
+    }
+
+    /**
+     * Called when the component is going to be rendered
+     */
+    componentWillMount() {
+        const id = this.props.match.params.id;
+        this.props.vacantService.show(id)
+            .then((res) => {
+                let vacant = this.state.vacant;
+                vacant.fillFromResponseData(res);
+                this.setState({vacant: vacant});
+            })
+            .catch((err) => {
+                toast.error('¡Hubo un error al cargar el elemento!');
+            });
     }
 
     /**
@@ -30,15 +46,16 @@ export default class CreateVacant extends React.Component {
      */
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.vacantService.store(this.state.vacant)
+        this.props.vacantService.update(this.state.vacant)
             .then(res => {
                 this.props.history.push("/vacancies");
-                toast.success('Se ha creado la vacante correctamente');
+                toast.success('Se ha actualizado la vacante correctamente');
             })
             .catch(err => {
-                this.setState({
+                /*this.setState({
                     errors: err.errors
-                });
+                });*/
+                console.log(err);
                 toast.error('Tienes errores en el formulario, por favor, revísalo');
             });
     }
@@ -69,7 +86,7 @@ export default class CreateVacant extends React.Component {
                     onValueChange={this.onValueChange}
                     vacant={this.state.vacant}
                     cardHeaderTitle={"Editar vacante"}
-                    footerButtonTitle={"Guardar vacante"}
+                    footerButtonTitle={"Editar vacante"}
                 />
             </div>
         );

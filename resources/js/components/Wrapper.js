@@ -19,6 +19,7 @@ import VacantService from '../services/VacantService';
 // Toast
 import { ToastContainer } from 'react-toastify';
 import CreateVacant from '../pages/vacancies/CreateVacant';
+import EditVacant from '../pages/vacancies/EditVacant';
 
 export default class Wrapper extends React.Component {
 
@@ -71,6 +72,14 @@ export default class Wrapper extends React.Component {
                                 path="/vacancies/create"
                                 render={(props) =>
                                     <CreateVacant
+                                        vacantService={this.vacantService}
+                                        {...props}/>
+                                }
+                                exact={true} />
+                            <Route
+                                path="/vacancies/:id/edit"
+                                render={(props) =>
+                                    <EditVacant
                                         vacantService={this.vacantService}
                                         {...props}/>
                                 }

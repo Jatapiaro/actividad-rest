@@ -27,6 +27,7 @@
     "dependencies": {
         "babel-plugin-transform-class-properties": "^6.24.1",
         "font-awesome": "^4.7.0",
+        "react-bootstrap4-modal": "^1.7.0",
         "react-router-dom": "^4.3.1",
         "react-toastify": "^4.5.2",
         "tabler-react": "^1.28.0"

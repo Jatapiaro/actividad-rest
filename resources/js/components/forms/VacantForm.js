@@ -13,7 +13,7 @@ export default class VacantForm extends React.Component {
             <React.Fragment>
                 <Form onSubmit={this.props.handleSubmit}>
                     <Card>
-                        <CardHeader title={"Nueva vacante"}/>
+                        <CardHeader title={this.props.cardHeaderTitle}/>
                         <Card.Body>
 
                             <Form.Group
@@ -61,7 +61,7 @@ export default class VacantForm extends React.Component {
                                     type="submit"
                                     color="primary"
                                     className="ml-auto">
-                                    Crear vacante
+                                    {this.props.footerButtonTitle}
                                 </Button>
                             </div>
                         </Card.Footer>
